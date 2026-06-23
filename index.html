@@ -12,13 +12,11 @@
         * { box-sizing: border-box; }
         html, body { height: 100%; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
 
-        /* ── Scrollbar ── */
         ::-webkit-scrollbar { width: 5px; height: 5px; }
         ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 99px; }
         html.dark ::-webkit-scrollbar-thumb { background: #334155; }
 
-        /* ── Tokens ── */
         :root {
             --bg:        #f1f5f9;
             --surface:   #ffffff;
@@ -48,10 +46,8 @@
 
         body { background: var(--bg); color: var(--text1); transition: background .3s, color .3s; }
 
-        /* ── App shell ── */
         #app { display: flex; height: 100vh; width: 100vw; overflow: hidden; }
 
-        /* ── Sidebar ── */
         #sidebar {
             width: 240px;
             min-width: 240px;
@@ -68,7 +64,6 @@
 
         .sidebar-top { padding: 28px 20px 20px; }
 
-        /* Avatar block */
         .avatar-ring {
             width: 52px; height: 52px;
             background: linear-gradient(135deg, #10b981, #059669);
@@ -86,7 +81,6 @@
             padding: 2px 8px; display: inline-block; margin-top: 4px;
         }
 
-        /* Nav */
         #sidebar nav { padding: 8px 12px; flex: 1; }
         .nav-item {
             display: flex; align-items: center; gap: 10px;
@@ -109,7 +103,6 @@
         .nav-icon { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 13px; background: var(--surface2); color: var(--text2); flex-shrink: 0; transition: all .18s; }
         .nav-item.active .nav-icon { background: rgba(16,185,129,.15); color: var(--accent); }
 
-        /* Sidebar footer */
         .sidebar-footer {
             padding: 16px 20px;
             border-top: 1px solid var(--border);
@@ -125,7 +118,6 @@
         }
         .social-btn:hover { background: var(--accent); color: #fff; border-color: var(--accent); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(16,185,129,.3); }
 
-        /* Theme toggle */
         #theme-toggle {
             width: 30px; height: 30px; border-radius: 8px;
             border: 1px solid var(--border); background: var(--surface);
@@ -135,23 +127,19 @@
         }
         #theme-toggle:hover { background: var(--surface2); color: var(--text1); }
 
-        /* ── Main scroll area ── */
         #main-scroll {
             flex: 1; overflow-y: auto; overflow-x: hidden;
             background: var(--bg); padding: 36px 40px;
         }
 
-        /* ── Sections ── */
         .view-section { display: none; animation: fadeUp .35s ease forwards; }
         .view-section.active { display: block; }
         @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* ── Page header ── */
         .page-header { margin-bottom: 32px; }
         .page-title { font-size: 28px; font-weight: 800; color: var(--text1); letter-spacing: -.02em; }
         .page-sub { font-size: 14px; color: var(--text2); margin-top: 6px; line-height: 1.6; max-width: 620px; }
 
-        /* ── Cards ── */
         .card {
             background: var(--surface);
             border: 1px solid var(--border);
@@ -163,7 +151,6 @@
         .card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
         .card-p { padding: 24px; }
 
-        /* ── KPI Cards ── */
         .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 28px; }
         .kpi-card {
             background: var(--surface);
@@ -186,20 +173,17 @@
         .kpi-value.accent { color: var(--accent); }
         .kpi-sub { font-size: 11.5px; color: var(--text3); margin-top: 6px; }
 
-        /* ── Chart grid ── */
         .chart-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
         .chart-container { position: relative; width: 100%; height: 300px; }
         .card-title { font-size: 15px; font-weight: 700; color: var(--text1); }
         .card-sub { font-size: 12px; color: var(--text3); margin-top: 3px; margin-bottom: 20px; }
 
-        /* ── Section headers ── */
         .section-label {
             font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em;
             color: var(--text3); margin-bottom: 16px; display: flex; align-items: center; gap: 8px;
         }
         .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
 
-        /* ── Timeline ── */
         .timeline-card {
             background: var(--surface); border: 1px solid var(--border);
             border-radius: 16px; padding: 24px; box-shadow: var(--shadow-sm);
@@ -218,11 +202,9 @@
             background: var(--surface2); color: var(--text2); border: 1px solid var(--border);
         }
 
-        /* ── Progress bars ── */
         .progress-track { height: 5px; background: var(--surface2); border-radius: 99px; overflow: hidden; }
         .progress-fill { height: 100%; border-radius: 99px; background: linear-gradient(90deg, var(--accent), #34d399); }
 
-        /* ── Filter bar ── */
         .filter-bar { display: flex; gap: 4px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 4px; box-shadow: var(--shadow-sm); }
         .filter-btn {
             padding: 7px 16px; border-radius: 9px; font-size: 12.5px; font-weight: 600;
@@ -233,7 +215,6 @@
         html.dark .filter-btn.active { background: var(--accent); color: #fff; }
         .filter-btn:hover:not(.active) { background: var(--surface2); color: var(--text1); }
 
-        /* ── Project cards ── */
         .project-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
         .project-card {
             background: var(--surface); border: 1px solid var(--border);
@@ -248,7 +229,6 @@
         .proj-link { font-size: 13px; font-weight: 600; color: var(--accent); text-decoration: none; display: inline-flex; align-items: center; gap: 5px; }
         .proj-link:hover { color: var(--accent2); }
 
-        /* ── Heatmaps ── */
         .heatmap-grid {
             display: grid; grid-template-rows: repeat(7, 1fr);
             grid-auto-flow: column; gap: 3px;
@@ -263,13 +243,11 @@
         .heatmap-legend span { font-size: 10px; font-weight: 600; color: var(--text3); text-transform: uppercase; letter-spacing: .05em; }
         .legend-dot { width: 10px; height: 10px; border-radius: 2px; }
 
-        /* ── Status dot ── */
         .status-dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
         .status-dot.live { background: var(--accent); box-shadow: 0 0 0 3px rgba(16,185,129,.25); animation: pulse 2s infinite; }
         .status-dot.warn { background: #f59e0b; box-shadow: 0 0 0 3px rgba(245,158,11,.25); }
         @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: .5; } }
 
-        /* ── Table ── */
         .data-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
         .data-table thead th { padding: 12px 20px; text-align: left; font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--text3); border-bottom: 1px solid var(--border); }
         .data-table tbody td { padding: 14px 20px; border-bottom: 1px solid var(--border); color: var(--text2); }
@@ -282,7 +260,6 @@
         .rb-finalist { background: rgba(16,185,129,.1); color: var(--accent); }
         .rb-part { background: var(--surface2); color: var(--text3); border: 1px solid var(--border); }
 
-        /* ── Tooltip ── */
         #custom-tooltip {
             position: fixed; background: #0f172a; color: #e2e8f0;
             padding: 6px 10px; border-radius: 7px; font-size: 11.5px;
@@ -298,10 +275,8 @@
             border-color: #0f172a transparent transparent transparent;
         }
 
-        /* ── Edu grid ── */
         .edu-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 24px; }
 
-        /* ── Responsive ── */
         @media (max-width: 1024px) {
             .kpi-grid { grid-template-columns: repeat(2, 1fr); }
             .chart-grid { grid-template-columns: 1fr; }
@@ -367,7 +342,7 @@
         <section id="overview" class="view-section active">
             <div class="page-header">
                 <h1 class="page-title">Profile Overview</h1>
-                <p class="page-sub">A quantitative snapshot of my technical profile — bridging high-level web architecture (NextJS) with low-level system performance (CUDA, C++).</p>
+                <p class="page-sub">A quantitative snapshot of my technical profile — bridging high‑level web architecture (Next.js/NestJS) with cloud‑native DevOps and systems engineering.</p>
             </div>
 
             <div class="kpi-grid">
@@ -510,7 +485,7 @@
             <div class="page-header" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;">
                 <div>
                     <h1 class="page-title">Projects Lab</h1>
-                    <p class="page-sub" style="margin-bottom:0;">Full-stack, computer vision, and embedded systems builds.</p>
+                    <p class="page-sub" style="margin-bottom:0;">Full‑stack, cloud‑native, and robotics visualization builds.</p>
                 </div>
                 <div class="filter-bar" id="filter-bar">
                     <button onclick="filterProjects('all')" class="filter-btn active" data-filter="all">All</button>
@@ -629,11 +604,36 @@
         github: 'GITGUYX8'
     };
 
-    // ── Data ──
+    // ── NEW PROJECTS DATA (from resume) ──
     const projectsData = [
-        { title: "openCodeSource Platform", category: "web", tags: ["NextJS", "Firebase", "Gemini API"], desc: "Full-stack CRUD web application utilizing NextJS and Firebase to simplify open-source onboarding. Integrated a custom Gemini 2.5 chatbot API for codebase navigation assistance.", link: "https://github.com/GITGUYX8/openCodeSource" },
-        { title: "Artifact (AR & Control System)", category: "sys", tags: ["ElectronJS", "Unity", "WebSockets"], desc: "Developed an ElectronJS desktop controller with real-time WebSocket communication to hardware. Integrated a Vuforia Unity AR app overlaying visuals on live streamed video.", link: "https://github.com/GITGUYX8/Rc-Artifact.git" },
-        { title: "APPLE-Detection UI", category: "ai", tags: ["Python", "YOLOv8", "OpenCV"], desc: "Real-time object detection system tracking objects via live video. Engineered robust algorithms handling visual occlusion with a UI displaying bounding boxes and confidence metrics.", link: "https://github.com/GITGUYX8/Apple-Tracker-.git" }
+        {
+            title: "AWS Cloud-Native Web Deployment",
+            category: "web",
+            tags: ["AWS ECS", "Docker", "VPC", "ALB"],
+            desc: "Engineered a production‑grade, serverless deployment architecture using AWS ECS Fargate, configured with a custom VPC, strict IAM roles, and an Application Load Balancer (ALB) for secure traffic routing. Optimized containerization utilizing multi‑stage Docker builds and cross‑platform compilation (buildx).",
+            link: "https://github.com/GITGUYX8/aws-deploy"
+        },
+        {
+            title: "SCNARE v3: ROS 2 EKS Lab Platform",
+            category: "web",
+            tags: ["NestJS", "TypeScript", "AWS EKS", "Kubernetes", "OAuth2"],
+            desc: "Developed a NestJS backend service to dynamically provision isolated, on‑demand ROS 2 learning environments (namespaces/pods) within an AWS EKS cluster. Engineered a secure reverse proxy utilizing RS256 JWTs and an OAuth2 sidecar to authenticate and stream in‑browser ttyd terminals via an AWS ALB ingress.",
+            link: "https://github.com/GITGUYX8/v3_SCNARE_eks-"
+        },
+        {
+            title: "Rviz2 Web‑Streaming Pipeline",
+            category: "sys",
+            tags: ["ROS 2", "noVNC", "WebSockets", "Docker", "Xvfb"],
+            desc: "Engineered a low‑latency remote visualization pipeline to stream ROS 2 Rviz2 3D sensor data and robotic diagnostics directly to web browsers using noVNC and WebSockets. Containerized the ROS 2 GUI environment using headless virtual framebuffers (Xvfb) and x11vnc, eliminating native GUI overhead and enabling cloud‑based teleoperation.",
+            link: "https://github.com/GITGUYX8/rviz2-nvnc-pipeline"
+        },
+        {
+            title: "SNARE v2 Environment & Control Panel",
+            category: "web",
+            tags: ["Node.js", "AWS ECS Fargate", "Docker", "GitHub Actions"],
+            desc: "Developed an Express.js API control panel to dynamically launch isolated AWS ECS Fargate tasks, provisioning on‑demand, containerized ROS 2 learning environments for students. Automated the build lifecycle using GitHub Actions, setting up workflows to build Docker images, push to Amazon ECR, and render ECS task definitions automatically on merges.",
+            link: "https://github.com/GITGUYX8/v2_SCANE"
+        }
     ];
 
     const competitionsData = [
@@ -717,11 +717,9 @@
         const today = new Date();
         const tooltip = document.getElementById('custom-tooltip');
         const palettes = {
-            // legacy keys (unused but kept for safety)
             emerald: ['#1a2e22','#6ee7b7','#34d399','#10b981','#065f46'],
             amber:   ['#2a1f0e','#fde68a','#fbbf24','#f59e0b','#92400e'],
             blue:    ['#0e1a2e','#bfdbfe','#60a5fa','#3b82f6','#1e3a8a'],
-            // active palette keys
             orange: ['#1e1412','#fed7aa','#f97316','#ea580c','#7c2d12'],
             green:  ['#0f1a12','#86efac','#4ade80','#16a34a','#14532d'],
             pink:   ['#1a0d14','#f9a8d4','#f472b6','#db2777','#831843']
@@ -853,43 +851,73 @@
         const gridColor = isDark ? 'rgba(255,255,255,0.06)' : '#f1f5f9';
         const labelColor = isDark ? '#8ea3bb' : '#475569';
 
+        // Updated Radar Chart – reflect new Cloud/DevOps skills
         new Chart(document.getElementById('skillsRadarChart').getContext('2d'), {
             type: 'radar',
             data: {
-                labels: ['Algorithms (C++)', 'Python/ML', 'NextJS/React', 'Computer Vision', 'Embedded/IoT', 'System Design'],
-                datasets: [{ label: 'Competency', data: [90, 85, 80, 88, 75, 80],
-                    backgroundColor: 'rgba(16,185,129,0.15)', borderColor: '#10b981',
-                    pointBackgroundColor: '#10b981', pointBorderColor: '#fff',
-                    pointHoverBackgroundColor: '#fff', pointHoverBorderColor: '#10b981', borderWidth: 2
+                labels: ['Algorithms (C++)', 'Python/ML', 'Full‑Stack (Next.js/NestJS)', 'Cloud & DevOps (AWS/K8s)', 'System Design', 'Computer Vision'],
+                datasets: [{
+                    label: 'Competency',
+                    data: [90, 85, 80, 90, 85, 88],
+                    backgroundColor: 'rgba(16,185,129,0.15)',
+                    borderColor: '#10b981',
+                    pointBackgroundColor: '#10b981',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: '#10b981',
+                    borderWidth: 2
                 }]
             },
             options: {
                 responsive: true, maintainAspectRatio: false,
-                scales: { r: { min: 0, max: 100,
-                    angleLines: { color: gridColor }, grid: { color: gridColor },
-                    pointLabels: { font: { size: 11, weight: '600' }, color: labelColor },
-                    ticks: { display: false }
-                }},
+                scales: {
+                    r: {
+                        min: 0, max: 100,
+                        angleLines: { color: gridColor },
+                        grid: { color: gridColor },
+                        pointLabels: { font: { size: 11, weight: '600' }, color: labelColor },
+                        ticks: { display: false }
+                    }
+                },
                 plugins: { legend: { display: false } }
             }
         });
 
+        // Updated Doughnut Chart – project domain distribution (web:3, sys:1, ai:0)
         new Chart(document.getElementById('domainDoughnutChart').getContext('2d'), {
             type: 'doughnut',
             data: {
-                labels: ['Full-Stack Web', 'AI & Computer Vision', 'Hardware & IoT'],
-                datasets: [{ data: [40, 40, 20], backgroundColor: ['#3b82f6','#10b981','#8b5cf6'], borderWidth: 0, hoverOffset: 6 }]
+                labels: ['Full‑Stack Web', 'AI & Computer Vision', 'Systems & IoT'],
+                datasets: [{
+                    data: [75, 0, 25],
+                    backgroundColor: ['#3b82f6', '#10b981', '#8b5cf6'],
+                    borderWidth: 0,
+                    hoverOffset: 6
+                }]
             },
             options: {
                 responsive: true, maintainAspectRatio: false, cutout: '72%',
                 plugins: {
-                    legend: { position: 'bottom', labels: { usePointStyle: true, padding: 20, font: { size: 12 }, color: labelColor }},
-                    tooltip: { callbacks: { label: ctx => ` ${ctx.label}: ${ctx.raw}%` }}
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            usePointStyle: true,
+                            padding: 20,
+                            font: { size: 12 },
+                            color: labelColor
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: ctx => ` ${ctx.label}: ${ctx.raw}%`
+                        }
+                    }
                 },
                 onClick: (_, els) => {
                     if (!els.length) return;
                     const f = ['web','ai','sys'][els[0].index];
-                    router('projects'); filterProjects(f);
+                    router('projects');
+                    filterProjects(f);
                 }
             }
         });
