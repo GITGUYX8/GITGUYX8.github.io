@@ -110,9 +110,19 @@ export default function Home() {
 
           <div className="flex items-center gap-4 sm:gap-5">
             <div className="relative p-[3px] rounded-[6px] sm:rounded-[8px] border-[1.5px] border-black/30 dark:border-white/[0.15] shrink-0">
-              {/* Initials avatar */}
-              <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-[3px] sm:rounded-[5px] overflow-hidden bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center">
-                <span className="text-white font-extrabold text-[20px] sm:text-[24px] tracking-tight">YS</span>
+              {/* Profile photo */}
+              <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-[3px] sm:rounded-[5px] overflow-hidden bg-zinc-100 dark:bg-zinc-900">
+                <Image
+                  src="/profile.jpg"
+                  alt="Yashvardhan Singh"
+                  width={240}
+                  height={240}
+                  quality={90}
+                  priority
+                  fetchPriority="high"
+                  sizes="(min-width: 640px) 120px, 96px"
+                  className="h-full w-full object-cover"
+                />
               </div>
             </div>
 
@@ -369,8 +379,12 @@ export default function Home() {
           <div className="absolute top-0 -left-4 w-[2px] h-[2px] bg-black/50 dark:bg-white/[0.25] -translate-x-1/2 -translate-y-1/2 pointer-events-none z-20" />
           <div className="absolute top-0 -right-4 w-[2px] h-[2px] bg-black/50 dark:bg-white/[0.25] translate-x-1/2 -translate-y-1/2 pointer-events-none z-20" />
 
-          <div className="py-2 relative mt-1">
+          <div className="py-2 relative mt-1 flex items-center justify-between gap-3">
             <h2 className="text-[18px] font-bold text-zinc-900 dark:text-zinc-100 tracking-tight">Achievements</h2>
+            <span className="shrink-0 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-bold bg-yellow-500/10 text-yellow-600 dark:text-yellow-500 border border-yellow-500/20">
+              <svg viewBox="0 0 24 24" className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="8" r="6" /><path d="M15.5 13 17 22l-5-3-5 3 1.5-9" /></svg>
+              5 hackathon wins
+            </span>
 
             {/* Horizontal line below Achievements heading */}
             <div className="absolute bottom-0 left-[-100vw] right-[-100vw] h-0 border-b border-black/30 dark:border-white/[0.15] pointer-events-none" style={{ maskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)' }} />

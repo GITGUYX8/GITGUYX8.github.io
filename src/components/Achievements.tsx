@@ -29,14 +29,12 @@ type Competition = {
 };
 
 const competitions: Competition[] = [
+  { event: "NSUT Oblivion", project: "Hackathon @ NSUT", result: "Winner", tone: "win" },
+  { event: "Hack WithMait @MAIT", project: "AI&I Website", result: "2nd Place", tone: "win" },
   { event: "ICPC 2025 (Kanpur Region)", project: "Competitive Programming", result: "Rank 2027", tone: "rank" },
   { event: "IICPC CodeFest 2026 Global", project: "Prelims (13,000+ participants)", result: "Rank 4085", tone: "rank" },
-  { event: "Hack WithMait @MAIT", project: "AI&I Website", result: "2nd Place", tone: "win" },
   { event: "NEX-Hack @IITM", project: "openCodeSource Platform", result: "Finalist", tone: "finalist" },
   { event: "SIH-2025", project: "ARTIFACT Vehicle", result: "Shortlisted", tone: "finalist" },
-  { event: "VIHAAN 8.0 @DTU", project: "E-VTON", result: "Participant", tone: "part" },
-  { event: "Techkriti 25 @IIT Kanpur", project: "HOVERCRAFT", result: "Participant", tone: "part" },
-  { event: "E-yantra-25 @IIT Bombay", project: "Krishi Drone Theme", result: "Participant", tone: "part" },
 ];
 
 const badgeStyles: Record<Competition["tone"], string> = {

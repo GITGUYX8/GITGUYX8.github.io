@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "fetch:github": "node scripts/fetch-github-contributions.mjs"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.15",

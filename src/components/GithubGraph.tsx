@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useMemo, useState } from "react";
+import snapshot from "@/data/githubContributions.json";
 
 interface ContributionDay {
   contributionCount: number;
@@ -27,11 +28,13 @@ interface TooltipState {
 }
 
 export function GithubGraph() {
-  const [weeks, setWeeks] = useState<ContributionWeek[]>([]);
+  // Seeded with the real full-year snapshot (scripts/fetch-github-contributions.mjs).
+  const [weeks, setWeeks] = useState<ContributionWeek[]>(snapshot.weeks);
   const [months, setMonths] = useState<ContributionMonth[]>([]);
-  const [totalContributions, setTotalContributions] = useState(0);
-  const [loading, setLoading] = useState(true);
+  const [totalContributions, setTotalContributions] = useState(snapshot.totalContributions);
+  const [loading, setLoading] = useState(false);
   const [tooltip, setTooltip] = useState<TooltipState | null>(null);
+  const [refreshFailed, setRefreshFailed] = useState(false);
 
   const emptyWeeks = useMemo<ContributionWeek[]>(() => {
     const today = new Date();
@@ -52,97 +55,60 @@ export function GithubGraph() {
   }, []);
 
   useEffect(() => {
-    const fetchContributions = async () => {
+    // Layer fresh public-events activity over the snapshot (rate-limited;
+    // snapshot stays on screen if this fails).
+    const refreshRecent = async () => {
       const username = "GITGUYX8";
-      const cacheKey = `github_contributions_${username}`;
-      const cachedData = typeof window !== "undefined" ? localStorage.getItem(cacheKey) : null;
-
-      if (cachedData) {
-        try {
-          const parsed = JSON.parse(cachedData);
-          setWeeks(parsed.weeks);
-          setMonths(parsed.months || []);
-          setTotalContributions(parsed.totalContributions);
-          setLoading(false);
-        } catch {
-          setLoading(true);
-        }
-      }
-
       try {
-        // Public events API works without a token (rate-limited, fine for static export).
         const response = await fetch(
           `https://api.github.com/users/${username}/events/public?per_page=100`
         );
         if (!response.ok) throw new Error(`GitHub API ${response.status}`);
         const events = await response.json();
 
-        const counts: Record<string, number> = {};
+        const live: Record<string, number> = {};
         for (const event of events) {
           const date = new Date(event.created_at).toISOString().slice(0, 10);
-          let weight = 1;
-          if (event.type === "PushEvent") {
-            weight = event.payload?.commits?.length || 1;
-          }
-          counts[date] = (counts[date] || 0) + weight;
+          const weight = event.type === "PushEvent" ? event.payload?.commits?.length || 1 : 1;
+          live[date] = (live[date] || 0) + weight;
         }
 
-        const today = new Date();
-        const start = new Date(today);
-        start.setDate(today.getDate() - 370);
-
-        const builtWeeks: ContributionWeek[] = [];
         let total = 0;
-        for (let w = 0; w < 53; w++) {
-          const days: ContributionDay[] = [];
-          for (let d = 0; d < 7; d++) {
-            const date = new Date(start);
-            date.setDate(start.getDate() + w * 7 + d);
-            if (date > today) break;
-            const key = date.toISOString().slice(0, 10);
-            const count = counts[key] || 0;
+        const merged: ContributionWeek[] = snapshot.weeks.map((week) => ({
+          contributionDays: week.contributionDays.map((day) => {
+            const count = Math.max(day.contributionCount, live[day.date] || 0);
             total += count;
-            days.push({ contributionCount: count, date: key });
-          }
-          if (days.length > 0) builtWeeks.push({ contributionDays: days });
-        }
+            return { ...day, contributionCount: count };
+          }),
+        }));
 
-        setWeeks(builtWeeks);
-        setMonths([]);
+        setWeeks(merged);
         setTotalContributions(total);
-        if (typeof window !== "undefined") {
-          localStorage.setItem(cacheKey, JSON.stringify({
-            weeks: builtWeeks,
-            months: [],
-            totalContributions: total,
-          }));
-        }
       } catch (error) {
-        console.error("Failed to fetch GitHub contributions", error);
-      } finally {
-        setLoading(false);
+        console.error("Failed to refresh GitHub contributions", error);
+        setRefreshFailed(true);
       }
     };
 
-    fetchContributions();
+    refreshRecent();
   }, []);
 
   const contributionLevels = useMemo<ContributionLevel[]>(
     () => [
       {
-        cell: "bg-zinc-100 dark:bg-zinc-800",
+        cell: "bg-[#ebedf0] dark:bg-[#161b22]",
       },
       {
-        cell: "bg-zinc-300 dark:bg-zinc-600",
+        cell: "bg-[#9be9a8] dark:bg-[#0e4429]",
       },
       {
-        cell: "bg-zinc-500 dark:bg-zinc-500",
+        cell: "bg-[#40c463] dark:bg-[#006d32]",
       },
       {
-        cell: "bg-zinc-700 dark:bg-zinc-300",
+        cell: "bg-[#30a14e] dark:bg-[#26a641]",
       },
       {
-        cell: "bg-zinc-950 dark:bg-zinc-100",
+        cell: "bg-[#216e39] dark:bg-[#39d353]",
       },
     ],
     []
@@ -185,7 +151,7 @@ export function GithubGraph() {
   const graphStatus =
     loading && totalContributions === 0
       ? "Loading GitHub contribution activity"
-      : `${totalContributions} GitHub activities in the last year`;
+      : `${totalContributions} GitHub activities in the last year${refreshFailed ? ` — snapshot ${snapshot.fetchedAt}` : ""}`;
   const dashedLineMask = {
     maskImage: "repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)",
     WebkitMaskImage: "repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)",

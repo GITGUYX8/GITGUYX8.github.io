@@ -25,7 +25,7 @@ const socialProfiles: Record<string, SocialProfile> = {
   GitHub: {
     name: "Yashvardhan Singh",
     handle: "GITGUYX8",
-    avatar: "https://github.com/GITGUYX8.png",
+    avatar: "/profile.jpg",
     bio: "Software Engineer • Cloud, backend & robotics",
     location: "New Delhi, India (UTC +05:30)",
     stats: [],
@@ -33,7 +33,7 @@ const socialProfiles: Record<string, SocialProfile> = {
   X: {
     name: "Yashvardhan Singh",
     handle: "@GITGUYX8",
-    avatar: "https://github.com/GITGUYX8.png",
+    avatar: "/profile.jpg",
     banner: darkBannerImage,
     bio: "Software Engineer • Cloud, backend & robotics",
     location: "New Delhi, India (UTC +05:30)",
@@ -42,7 +42,7 @@ const socialProfiles: Record<string, SocialProfile> = {
   LinkedIn: {
     name: "Yashvardhan Singh",
     handle: "in/yashvardhan-singh-6026b731b",
-    avatar: "https://github.com/GITGUYX8.png",
+    avatar: "/profile.jpg",
     banner: darkBannerImage,
     bio: "Software Engineer • Cloud, backend & robotics",
     location: "New Delhi, India",
@@ -51,7 +51,7 @@ const socialProfiles: Record<string, SocialProfile> = {
   LeetCode: {
     name: "Yashvardhan Singh",
     handle: "_yASHy_",
-    avatar: "https://github.com/GITGUYX8.png",
+    avatar: "/profile.jpg",
     bio: "Competitive programmer • ICPC & IICPC ranked",
     location: "New Delhi, India (UTC +05:30)",
     stats: [],
@@ -59,7 +59,7 @@ const socialProfiles: Record<string, SocialProfile> = {
   Codeforces: {
     name: "Yashvardhan Singh",
     handle: "_Yashy_",
-    avatar: "https://github.com/GITGUYX8.png",
+    avatar: "/profile.jpg",
     bio: "Competitive programmer • ICPC & IICPC ranked",
     location: "New Delhi, India (UTC +05:30)",
     stats: [],
