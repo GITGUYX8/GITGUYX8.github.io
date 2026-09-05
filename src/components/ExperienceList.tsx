@@ -25,7 +25,9 @@ const experiences: ExperienceData[] = [
     role: "Cloud/DevOps Intern",
     dates: "May 2026 - Jul 2026",
     location: "Remote",
+    src: "/experience-logos/eyantra.svg",
     initials: "EY",
+    imageFit: "contain",
     description: `
       Designed and built a Kubernetes-based multi-tenant architecture provisioning isolated, on-demand compute environments
       Implemented WebRTC-based remote desktop streaming for GUI-heavy applications with a full observability stack (Prometheus, Grafana, Loki)
@@ -51,7 +53,9 @@ const experiences: ExperienceData[] = [
     role: "Backend Engineer (Collaborator)",
     dates: "2026",
     location: "Remote",
+    src: "/dezai-logo.jpg",
     initials: "DZ",
+    imageFit: "contain",
     description: `
       Contributed as a backend collaborator on a full-stack platform, shipping 7+ merged pull requests across auth, caching, and admin systems
       Caching & Resilience: built a fail-fast Redis client with circuit breaker and stampede protection; replaced a deprecated caching library with a Redis-backed cache-aside pattern
@@ -77,7 +81,9 @@ const experiences: ExperienceData[] = [
     role: "R&D Intern",
     dates: "Jul 2025 - Aug 2025",
     location: "Remote",
+    src: "/experience-logos/nvidia.svg",
     initials: "NV",
+    imageFit: "contain",
     description: `
       Configured and optimized YOLOv5 and MediaPipe for human detection, gesture recognition, and real-time pose tracking
       Built image processing pipelines utilizing OpenCV, NumPy, CUDA, and TensorFlow
@@ -103,7 +109,9 @@ const experiences: ExperienceData[] = [
     role: "Member @ MAIT",
     dates: "Oct 2024 - Present",
     location: "New Delhi",
+    src: "/experience-logos/atom.png",
     initials: "AT",
+    imageFit: "contain",
     description: `
       Collaborating with a team of developers on autonomous systems, control implementation, and algorithmic logic
       Working across robotics software, AI-driven perception, and competitive technical builds

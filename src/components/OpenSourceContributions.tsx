@@ -38,9 +38,15 @@ const CONTRIBUTIONS: Contribution[] = [
   },
   {
     id: 5,
-    title: "Backend collaborator: auth, caching & admin (7+ merged PRs)",
-    url: "https://github.com/GITGUYX8?tab=repositories",
-    repository: "GITGUYX8",
+    title: "Work order processing system (FastAPI + pgvector + Next.js)",
+    url: "https://github.com/GITGUYX8/BM_TASK",
+    repository: "GITGUYX8/BM_TASK",
+  },
+  {
+    id: 6,
+    title: "TTS Locally: offline clipboard-to-speech (Piper + Linux)",
+    url: "https://github.com/GITGUYX8/TTS-Locally",
+    repository: "GITGUYX8/TTS-Locally",
   },
 ];
 

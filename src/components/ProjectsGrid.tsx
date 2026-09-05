@@ -231,28 +231,31 @@ export function ProjectsGrid() {
   return (
     <>
       <div className="flex flex-col relative z-10 w-full">
-        {/* Row 1 */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-10 md:gap-y-0 pb-10 md:pb-6">
-          {projectsData.slice(0, 2).map((project) => (
-            <ProjectCard key={project.title} project={project} setActiveVideo={setActiveVideo} />
-          ))}
-        </div>
+        {Array.from({ length: Math.ceil(projectsData.length / 2) }).map((_, rowIndex) => {
+          const rowProjects = projectsData.slice(rowIndex * 2, rowIndex * 2 + 2);
+          const isFirst = rowIndex === 0;
+          const isLast = rowIndex === Math.ceil(projectsData.length / 2) - 1;
+          return (
+            <div key={rowIndex} className="flex flex-col relative w-full">
+              <div className={`grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-10 md:gap-y-0 ${isFirst ? "pb-10 md:pb-6" : isLast ? "pt-0 md:pt-6" : "pb-10 md:pb-6 pt-0 md:pt-6"}`}>
+                {rowProjects.map((project) => (
+                  <ProjectCard key={project.title} project={project} setActiveVideo={setActiveVideo} />
+                ))}
+              </div>
 
-        {/* Middle Horizontal Line Container */}
-        <div className="relative w-full h-0 hidden md:block">
-          <div className="absolute left-[-100vw] right-[-100vw] h-0 border-b border-black/30 dark:border-white/[0.15] pointer-events-none" style={{ maskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)' }} />
-          {/* Intersections */}
-          <div className="absolute top-0 -left-4 w-[2px] h-[2px] bg-black/40 dark:bg-white/[0.25] -translate-x-1/2 -translate-y-1/2 pointer-events-none z-20" />
-          <div className="absolute top-0 -right-4 w-[2px] h-[2px] bg-black/40 dark:bg-white/[0.25] translate-x-1/2 -translate-y-1/2 pointer-events-none z-20" />
-          <div className="absolute top-0 left-1/2 w-[2px] h-[2px] bg-black/40 dark:bg-white/[0.25] -translate-x-1/2 -translate-y-1/2 pointer-events-none z-20" />
-        </div>
-
-        {/* Row 2 */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-10 md:gap-y-0 pt-0 md:pt-6">
-          {projectsData.slice(2, 4).map((project) => (
-            <ProjectCard key={project.title} project={project} setActiveVideo={setActiveVideo} />
-          ))}
-        </div>
+              {/* Horizontal divider between rows */}
+              {!isLast && (
+                <div className="relative w-full h-0 hidden md:block">
+                  <div className="absolute left-[-100vw] right-[-100vw] h-0 border-b border-black/30 dark:border-white/[0.15] pointer-events-none" style={{ maskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)' }} />
+                  {/* Intersections */}
+                  <div className="absolute top-0 -left-4 w-[2px] h-[2px] bg-black/40 dark:bg-white/[0.25] -translate-x-1/2 -translate-y-1/2 pointer-events-none z-20" />
+                  <div className="absolute top-0 -right-4 w-[2px] h-[2px] bg-black/40 dark:bg-white/[0.25] translate-x-1/2 -translate-y-1/2 pointer-events-none z-20" />
+                  <div className="absolute top-0 left-1/2 w-[2px] h-[2px] bg-black/40 dark:bg-white/[0.25] -translate-x-1/2 -translate-y-1/2 pointer-events-none z-20" />
+                </div>
+              )}
+            </div>
+          );
+        })}
       </div>
 
       {/* MODAL */}
